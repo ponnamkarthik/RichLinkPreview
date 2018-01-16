@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="grey_900">#212121</color>
+    <color name="blue_grey_300">#616f76</color>
+    <color name="blue_grey_700">#434f54</color>
+    <color name="bg_card">#e0f9cc</color>
+</resources>
