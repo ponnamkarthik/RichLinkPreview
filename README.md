@@ -1,7 +1,7 @@
 # RichLink-Preview
 A Rich Link Preview Library for Android
 
->To implement existing layout using XML
+#### To implement existing layout using XML
 
 Add below code in activity_main.xml
 
@@ -49,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
 
 > **OR**
 
-> If you want to implement your own layout.
+#### If you want to implement your own layout.
 
 ~~~java
 private MetaData data;
@@ -69,7 +69,7 @@ RichPreview richPreview = new RichPreview(new ResponseListener() {
 });
 ~~~
 
-> MetaData :
+> MetaData
 
 ```java
 metaData.getTitle();
