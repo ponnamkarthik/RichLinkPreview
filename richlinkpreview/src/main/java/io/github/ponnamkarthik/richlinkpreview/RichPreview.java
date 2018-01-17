@@ -1,6 +1,7 @@
 package io.github.ponnamkarthik.richlinkpreview;
 
 import android.os.AsyncTask;
+import android.webkit.URLUtil;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -41,31 +42,76 @@ public class RichPreview {
 
                 Elements elements = doc.getElementsByTag("meta");
 
+                // getTitle doc.select("meta[property=og:title]")
+                String title = doc.select("meta[property=og:title]").attr("content");
+
+                if(title == null || title.isEmpty()) {
+                    title = doc.title();
+                }
+                metaData.setTitle(title);
+
+                //getDescription
+                String description = doc.select("meta[name=description]").attr("content");
+                if (description.isEmpty() || description == null) {
+                    description = doc.select("meta[name=Description]").attr("content");
+                }
+                if (description.isEmpty() || description == null) {
+                    description = doc.select("meta[property=og:description]").attr("content");
+                }
+                if (description.isEmpty() || description == null) {
+                    description = "";
+                }
+                metaData.setDescription(description);
+
+
+                // getMediaType
+                Elements mediaTypes = doc.select("meta[name=medium]");
+                String type = "";
+                if (mediaTypes.size() > 0) {
+                    String media = mediaTypes.attr("content");
+
+                    type = media.equals("image") ? "photo" : media;
+                } else {
+                    type = doc.select("meta[property=og:type]").attr("content");
+                }
+                metaData.setMediatype(type);
+
+
+                //getImages
+                Elements imageElements = doc.select("meta[property=og:image]");
+                if(imageElements.size() > 0) {
+                    String image = imageElements.attr("content");
+                    if(!image.isEmpty()) {
+                        metaData.setImageurl(resolveURL(url, image));
+                    }
+                }
+                if(metaData.getImageurl().isEmpty()) {
+                    String src = doc.select("link[rel=image_src]").attr("href");
+                    if (!src.isEmpty()) {
+                        metaData.setImageurl(resolveURL(url, src));
+                    } else {
+                        src = doc.select("link[rel=apple-touch-icon]").attr("href");
+                        if(!src.isEmpty()) {
+                            metaData.setImageurl(resolveURL(url, src));
+                        } else {
+                            src = doc.select("link[rel=icon]").attr("href");
+                            if(!src.isEmpty()) {
+                                metaData.setImageurl(resolveURL(url, src));
+                            }
+                        }
+                    }
+                }
+
                 for(Element element : elements) {
                     if(element.hasAttr("property")) {
-
                         String str_property = element.attr("property").toString().trim();
-
-                        if(str_property.equals("og:title")) {
-                            metaData.setTitle(element.attr("content").toString());
-                        }
                         if(str_property.equals("og:url")) {
                             metaData.setUrl(element.attr("content").toString());
                         }
                         if(str_property.equals("og:site_name")) {
                             metaData.setSitename(element.attr("content").toString());
                         }
-                        if(str_property.equals("og:image")) {
-                            metaData.setImageurl(element.attr("content").toString());
-                        }
-                        if(str_property.equals("og:description")) {
-                            metaData.setDescription(element.attr("content").toString());
-                        }
                     }
-                }
-
-                if(metaData.getTitle().equals("") || metaData.getTitle().isEmpty()) {
-                    metaData.setTitle(doc.title());
                 }
 
                 if(metaData.getUrl().equals("") || metaData.getUrl().isEmpty()) {
@@ -95,6 +141,21 @@ public class RichPreview {
         protected void onPostExecute(Void aVoid) {
             super.onPostExecute(aVoid);
             responseListener.onData(metaData);
+        }
+    }
+
+    private String resolveURL(String url, String part) {
+        if(URLUtil.isValidUrl(part)) {
+            return part;
+        } else {
+            URI base_uri = null;
+            try {
+                base_uri = new URI(url);
+            } catch (URISyntaxException e) {
+                e.printStackTrace();
+            }
+            base_uri = base_uri.resolve(part);
+            return base_uri.toString();
         }
     }
 

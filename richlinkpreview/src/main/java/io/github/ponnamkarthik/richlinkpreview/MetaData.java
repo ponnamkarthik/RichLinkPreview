@@ -11,6 +11,7 @@ public class MetaData {
     private String title = "";
     private String description = "";
     private String sitename = "";
+    private String mediatype = "";
 
     public String getUrl() {
         return url;
@@ -50,5 +51,13 @@ public class MetaData {
 
     public void setSitename(String sitename) {
         this.sitename = sitename;
+    }
+
+    public String getMediatype() {
+        return mediatype;
+    }
+
+    public void setMediatype(String mediatype) {
+        this.mediatype = mediatype;
     }
 }

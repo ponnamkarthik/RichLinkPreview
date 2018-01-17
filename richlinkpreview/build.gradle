@@ -6,8 +6,8 @@ ext {
     bintrayName = 'RichLinkPreview'
 
     publishedGroupId = 'io.github.ponnamkarthik'
-    libraryName = 'richlinkprevie'
-    artifact = 'richlinkprevie'
+    libraryName = 'richlinkpreview'
+    artifact = 'richlinkpreview'
 
     libraryDescription = 'A Rich Link Preview Library for Android'
 
