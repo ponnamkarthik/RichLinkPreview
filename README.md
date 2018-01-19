@@ -1,6 +1,8 @@
 # RichLink-Preview
 A Rich Link Preview Library for Android
 
+[![Android Arsenal]( https://img.shields.io/badge/Android%20Arsenal-RichLinkPreview-green.svg?style=flat )]( https://android-arsenal.com/details/1/6702 )
+
 #### To implement existing layout using XML
 
 Add below code in activity_main.xml
@@ -16,7 +18,6 @@ Add below code in activity_main.xml
 In your MainActivity.java add below code
 
 ~~~java
-
 public class MainActivity extends AppCompatActivity {
     
     RichLinkView richLinkView; 

@@ -34,6 +34,7 @@ public class RichPreview {
 
     private class getData extends AsyncTask<Void , Void , Void> {
 
+
         @Override
         protected Void doInBackground(Void... params) {
             Document doc = null;
@@ -132,7 +133,6 @@ public class RichPreview {
                 e.printStackTrace();
                 responseListener.onError(new Exception("No Html Received from " + url + " Check your Internet " + e.getLocalizedMessage()));
             }
-
 
             return null;
         }
