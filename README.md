@@ -3,6 +3,11 @@ A Rich Link Preview Library for Android
 
 [![Android Arsenal]( https://img.shields.io/badge/Android%20Arsenal-RichLinkPreview-green.svg?style=flat )]( https://android-arsenal.com/details/1/6702 )
 
+
+> Sample Image
+
+![alt ScreenShot](https://github.com/PonnamKarthik/RichLinkPreview/raw/master/screenshots/sample.png)
+
 #### To implement existing layout using XML
 
 Add below code in activity_main.xml
