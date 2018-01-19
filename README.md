@@ -7,6 +7,13 @@ A Rich Link Preview Library for Android
 > Sample Image
 <img src="https://github.com/PonnamKarthik/RichLinkPreview/raw/master/screenshots/sample.png" width="300" alt="ScreenShot">
 
+
+> Import using Gradle
+
+~~~gradle
+compile 'io.github.ponnamkarthik:richlinkpreview:1.0.2'
+~~~
+
 #### To implement existing layout using XML
 
 Add below code in activity_main.xml
