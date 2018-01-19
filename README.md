@@ -5,8 +5,7 @@ A Rich Link Preview Library for Android
 
 
 > Sample Image
-
-![alt ScreenShot](https://github.com/PonnamKarthik/RichLinkPreview/raw/master/screenshots/sample.png)
+<img src="https://github.com/PonnamKarthik/RichLinkPreview/raw/master/screenshots/sample.png" width="300" alt="ScreenShot">
 
 #### To implement existing layout using XML
 
