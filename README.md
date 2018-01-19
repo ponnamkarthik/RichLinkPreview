@@ -8,7 +8,7 @@ A Rich Link Preview Library for Android
 <img src="https://github.com/PonnamKarthik/RichLinkPreview/raw/master/screenshots/sample.png" width="300" alt="ScreenShot">
 
 
-> Import using Gradle
+#### Import using Gradle
 
 ~~~gradle
 compile 'io.github.ponnamkarthik:richlinkpreview:1.0.2'
