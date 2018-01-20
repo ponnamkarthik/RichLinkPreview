@@ -2,34 +2,28 @@ package io.github.ponnamkarthik.richlinkpreview;
 
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Build;
 import android.support.annotation.RequiresApi;
-import android.text.Spannable;
-import android.text.SpannableString;
-import android.text.style.URLSpan;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
-import com.squareup.picasso.Transformation;
 
 /**
  * Created by ponna on 16-01-2018.
  */
 
-public class RichLinkView extends RelativeLayout {
+public class RichLinkViewSkype extends RelativeLayout {
 
     private View view;
     Context context;
     private MetaData meta;
 
-    LinearLayout linearLayout;
+    RelativeLayout relativeLayout;
     ImageView imageView;
     TextView textViewTitle;
     TextView textViewDesp;
@@ -38,23 +32,23 @@ public class RichLinkView extends RelativeLayout {
     private String main_url;
 
 
-    public RichLinkView(Context context) {
+    public RichLinkViewSkype(Context context) {
         super(context);
         this.context = context;
     }
 
-    public RichLinkView(Context context, AttributeSet attrs) {
+    public RichLinkViewSkype(Context context, AttributeSet attrs) {
         super(context, attrs);
         this.context = context;
     }
 
-    public RichLinkView(Context context, AttributeSet attrs, int defStyleAttr) {
+    public RichLinkViewSkype(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         this.context = context;
     }
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
-    public RichLinkView(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
+    public RichLinkViewSkype(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);
         this.context = context;
     }
@@ -62,9 +56,9 @@ public class RichLinkView extends RelativeLayout {
     public void initView() {
         this.view = this;
 
-        inflate(context, R.layout.link_layout,this);
+        inflate(context, R.layout.skype_link_layout,this);
 
-        linearLayout = (LinearLayout) findViewById(R.id.rich_link_card);
+        relativeLayout = (RelativeLayout) findViewById(R.id.rich_link_card);
         imageView = (ImageView) findViewById(R.id.rich_link_image);
         textViewTitle = (TextView) findViewById(R.id.rich_link_title);
         textViewDesp = (TextView) findViewById(R.id.rich_link_desp);
@@ -96,7 +90,7 @@ public class RichLinkView extends RelativeLayout {
         }
 
 
-        linearLayout.setOnClickListener(new OnClickListener() {
+        relativeLayout.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(main_url));

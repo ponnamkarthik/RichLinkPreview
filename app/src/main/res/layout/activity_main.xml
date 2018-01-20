@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="io.github.ponnamkarthik.sample.MainActivity"
-    android:fitsSystemWindows="true">
+    tools:context="io.github.ponnamkarthik.sample.MainActivity">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -13,7 +11,7 @@
 
         <LinearLayout
             android:animateLayoutChanges="true"
-            android:layout_margin="16dp"
+            android:layout_marginTop="16dp"
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
@@ -25,36 +23,29 @@
 
             </io.github.ponnamkarthik.richlinkpreview.RichLinkView>
 
-            <io.github.ponnamkarthik.richlinkpreview.RichLinkView
+            <io.github.ponnamkarthik.richlinkpreview.RichLinkViewTelegram
                 android:layout_marginTop="16dp"
                 android:id="@+id/richLinkView1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-            </io.github.ponnamkarthik.richlinkpreview.RichLinkView>
+            </io.github.ponnamkarthik.richlinkpreview.RichLinkViewTelegram>
 
-            <io.github.ponnamkarthik.richlinkpreview.RichLinkView
+            <io.github.ponnamkarthik.richlinkpreview.RichLinkViewSkype
                 android:layout_marginTop="16dp"
                 android:id="@+id/richLinkView2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-            </io.github.ponnamkarthik.richlinkpreview.RichLinkView>
+            </io.github.ponnamkarthik.richlinkpreview.RichLinkViewSkype>
 
-            <io.github.ponnamkarthik.richlinkpreview.RichLinkView
+            <io.github.ponnamkarthik.richlinkpreview.RichLinkViewTwitter
                 android:layout_marginTop="16dp"
                 android:id="@+id/richLinkView3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-            </io.github.ponnamkarthik.richlinkpreview.RichLinkView>
-
-            <io.github.ponnamkarthik.richlinkpreview.RichLinkView
-                android:layout_marginTop="16dp"
-                android:id="@+id/richLinkView4"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-            </io.github.ponnamkarthik.richlinkpreview.RichLinkView>
+            </io.github.ponnamkarthik.richlinkpreview.RichLinkViewTwitter>
 
         </LinearLayout>
 

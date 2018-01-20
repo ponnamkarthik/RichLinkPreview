@@ -19,11 +19,30 @@ compile 'io.github.ponnamkarthik:richlinkpreview:1.0.2'
 Add below code in activity_main.xml
 
 ~~~xml
+<!--default view or whatsapp -->
 <io.github.ponnamkarthik.richlinkpreview.RichLinkView
     android:id="@+id/richLinkView"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 </io.github.ponnamkarthik.richlinkpreview.RichLinkView>
+<!-- Telegram -->
+<io.github.ponnamkarthik.richlinkpreview.RichLinkViewTelegram
+    android:id="@+id/richLinkView"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+</io.github.ponnamkarthik.richlinkpreview.RichLinkViewTelegram>
+<!-- Skype -->
+<io.github.ponnamkarthik.richlinkpreview.RichLinkViewSkype
+    android:id="@+id/richLinkView"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+</io.github.ponnamkarthik.richlinkpreview.RichLinkViewSkype>
+<!-- Twitter -->
+<io.github.ponnamkarthik.richlinkpreview.RichLinkViewTwitter
+    android:id="@+id/richLinkView"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+</io.github.ponnamkarthik.richlinkpreview.RichLinkViewTwitter>
 ~~~
 
 In your MainActivity.java add below code
@@ -42,6 +61,7 @@ public class MainActivity extends AppCompatActivity {
         richLinkView = (RichLinkView) findViewById(R.id.richLinkView);
         
         
+        
         richLinkView.setLink("https://stackoverflow.com", new ViewListener() {
             
             @Override
@@ -57,6 +77,16 @@ public class MainActivity extends AppCompatActivity {
         
     }
 }
+~~~
+
+
+~~~java
+RichLinkView richLinkView;
+RichLinkViewTelegram richLinkViewTelegram;
+RichLinkViewSkype richLinkViewSkype;
+RichLinkViewTwitter richLinkViewTwitter;
+
+//Set Link is same as default
 ~~~
 
 > **OR**

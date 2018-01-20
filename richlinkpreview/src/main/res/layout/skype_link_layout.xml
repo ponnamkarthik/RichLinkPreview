@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="150dp"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/rich_link_card"
+    android:background="@drawable/bg_radius"
+    android:layout_margin="5dp">
+
+    <ImageView
+        android:scaleType="centerInside"
+        android:id="@+id/rich_link_image"
+        android:layout_width="match_parent"
+        android:layout_height="150dp" />
+
+    <RelativeLayout
+        android:background="@drawable/bg_skype"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_alignParentBottom="true"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:paddingLeft="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <TextView
+                    android:textStyle="bold"
+                    android:maxLines="1"
+                    android:ellipsize="end"
+                    android:id="@+id/rich_link_title"
+                    android:textColor="@color/md_white_1000"
+                    android:padding="2dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    tools:text="Data"/>
+
+                <TextView
+                    android:maxLines="2"
+                    android:ellipsize="end"
+                    android:id="@+id/rich_link_desp"
+                    android:textColor="@color/md_white_1000"
+                    android:padding="2dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    tools:text="Data"/>
+
+                <TextView
+                    android:maxLines="1"
+                    android:ellipsize="end"
+                    android:id="@+id/rich_link_url"
+                    android:textColor="@color/md_white_1000"
+                    android:padding="2dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    tools:text="Data"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</RelativeLayout>

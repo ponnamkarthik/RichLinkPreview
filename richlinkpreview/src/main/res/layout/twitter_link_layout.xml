@@ -6,7 +6,7 @@
     android:orientation="horizontal"
     android:gravity="center"
     android:padding="5dp"
-    android:background="@drawable/bg_card"
+    android:background="@drawable/bg_radius"
     android:id="@+id/rich_link_card"
     android:layout_margin="5dp">
 
@@ -38,16 +38,6 @@
             android:ellipsize="end"
             android:id="@+id/rich_link_desp"
             android:textColor="@color/blue_grey_300"
-            android:padding="2dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            tools:text="Data"/>
-
-        <TextView
-            android:maxLines="1"
-            android:ellipsize="end"
-            android:id="@+id/rich_link_url"
-            android:textColor="@color/blue_grey_700"
             android:padding="2dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

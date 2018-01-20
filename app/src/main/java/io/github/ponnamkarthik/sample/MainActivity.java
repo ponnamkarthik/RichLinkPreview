@@ -4,15 +4,17 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 import io.github.ponnamkarthik.richlinkpreview.RichLinkView;
+import io.github.ponnamkarthik.richlinkpreview.RichLinkViewSkype;
+import io.github.ponnamkarthik.richlinkpreview.RichLinkViewTelegram;
+import io.github.ponnamkarthik.richlinkpreview.RichLinkViewTwitter;
 import io.github.ponnamkarthik.richlinkpreview.ViewListener;
 
 public class MainActivity extends AppCompatActivity {
 
     RichLinkView richLinkView;
-    RichLinkView richLinkView1;
-    RichLinkView richLinkView2;
-    RichLinkView richLinkView3;
-    RichLinkView richLinkView4;
+    RichLinkViewTelegram richLinkView1;
+    RichLinkViewSkype richLinkView2;
+    RichLinkViewTwitter richLinkView3;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,12 +22,11 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         richLinkView = (RichLinkView) findViewById(R.id.richLinkView);
-        richLinkView1 = (RichLinkView) findViewById(R.id.richLinkView1);
-        richLinkView2 = (RichLinkView) findViewById(R.id.richLinkView2);
-        richLinkView3 = (RichLinkView) findViewById(R.id.richLinkView3);
-        richLinkView4 = (RichLinkView) findViewById(R.id.richLinkView4);
+        richLinkView1 = (RichLinkViewTelegram) findViewById(R.id.richLinkView1);
+        richLinkView2 = (RichLinkViewSkype) findViewById(R.id.richLinkView2);
+        richLinkView3 = (RichLinkViewTwitter) findViewById(R.id.richLinkView3);
 
-        richLinkView.setLink("https://stackoverflow.com", new ViewListener() {
+        richLinkView.setLink("https://whatsapp.com" ,new ViewListener() {
             @Override
             public void onSuccess(boolean status) {
 
@@ -36,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
-        richLinkView1.setLink("https://facebook.com", new ViewListener() {
+        richLinkView1.setLink("https://telegram.org" ,new ViewListener() {
             @Override
             public void onSuccess(boolean status) {
 
@@ -47,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
-        richLinkView2.setLink("https://twitter.com", new ViewListener() {
+        richLinkView2.setLink("https://www.skype.com" ,new ViewListener() {
             @Override
             public void onSuccess(boolean status) {
 
@@ -58,7 +59,7 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
-        richLinkView3.setLink("https://medium.com", new ViewListener() {
+        richLinkView3.setLink("https://twitter.com" ,new ViewListener() {
             @Override
             public void onSuccess(boolean status) {
 
@@ -69,17 +70,7 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
-        richLinkView4.setLink("https://github.com", new ViewListener() {
-            @Override
-            public void onSuccess(boolean status) {
 
-            }
-
-            @Override
-            public void onError(Exception e) {
-
-            }
-        });
 
     }
 }

@@ -14,7 +14,7 @@ ext {
     siteUrl = 'https://github.com/PonnamKarthik/RichLink-Preview'
     gitUrl = 'https://github.com/PonnamKarthik/RichLink-Preview.git'
 
-    libraryVersion = '1.0.2'
+    libraryVersion = '1.0.3'
 
     developerId = 'KarthikPonnam'
     developerName = 'Karthik Ponnam'
@@ -33,8 +33,6 @@ android {
     defaultConfig {
         minSdkVersion 14
         targetSdkVersion 26
-        versionCode 1
-        versionName "1.0"
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
