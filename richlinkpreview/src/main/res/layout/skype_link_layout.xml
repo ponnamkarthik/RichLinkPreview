@@ -51,15 +51,30 @@
                     android:layout_height="wrap_content"
                     tools:text="Data"/>
 
-                <TextView
-                    android:maxLines="1"
-                    android:ellipsize="end"
-                    android:id="@+id/rich_link_url"
-                    android:textColor="@color/md_white_1000"
-                    android:padding="2dp"
+                <LinearLayout
+                    android:gravity="center"
+                    android:layout_gravity="center"
+                    android:orientation="horizontal"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    tools:text="Data"/>
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:scaleType="centerInside"
+                        android:id="@+id/rich_link_favicon"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp" />
+
+                    <TextView
+                        android:maxLines="1"
+                        android:ellipsize="end"
+                        android:id="@+id/rich_link_url"
+                        android:textColor="@color/md_white_1000"
+                        android:padding="2dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        tools:text="Data"/>
+
+                </LinearLayout>
 
             </LinearLayout>
 

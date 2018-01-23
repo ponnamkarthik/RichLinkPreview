@@ -25,6 +25,7 @@ public class RichLinkViewSkype extends RelativeLayout {
 
     RelativeLayout relativeLayout;
     ImageView imageView;
+    ImageView imageViewFavIcon;
     TextView textViewTitle;
     TextView textViewDesp;
     TextView textViewUrl;
@@ -60,6 +61,7 @@ public class RichLinkViewSkype extends RelativeLayout {
 
         relativeLayout = (RelativeLayout) findViewById(R.id.rich_link_card);
         imageView = (ImageView) findViewById(R.id.rich_link_image);
+        imageViewFavIcon = (ImageView) findViewById(R.id.rich_link_favicon);
         textViewTitle = (TextView) findViewById(R.id.rich_link_title);
         textViewDesp = (TextView) findViewById(R.id.rich_link_desp);
         textViewUrl = (TextView) findViewById(R.id.rich_link_url);
@@ -71,6 +73,14 @@ public class RichLinkViewSkype extends RelativeLayout {
             Picasso.with(context)
                     .load(meta.getImageurl())
                     .into(imageView);
+        }
+
+        if(meta.getFavicon().equals("") || meta.getFavicon().isEmpty()) {
+            imageViewFavIcon.setVisibility(GONE);
+        } else {
+            Picasso.with(context)
+                    .load(meta.getFavicon())
+                    .into(imageViewFavIcon);
         }
 
         if(meta.getTitle().isEmpty() || meta.getTitle().equals("")) {

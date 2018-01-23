@@ -12,6 +12,7 @@ public class MetaData {
     private String description = "";
     private String sitename = "";
     private String mediatype = "";
+    private String favicon = "";
 
     public String getUrl() {
         return url;
@@ -59,5 +60,13 @@ public class MetaData {
 
     public void setMediatype(String mediatype) {
         this.mediatype = mediatype;
+    }
+
+    public String getFavicon() {
+        return favicon;
+    }
+
+    public void setFavicon(String favicon) {
+        this.favicon = favicon;
     }
 }

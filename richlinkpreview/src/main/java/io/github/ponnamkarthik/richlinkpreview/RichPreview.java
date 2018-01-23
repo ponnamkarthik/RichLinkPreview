@@ -94,12 +94,25 @@ public class RichPreview {
                         src = doc.select("link[rel=apple-touch-icon]").attr("href");
                         if(!src.isEmpty()) {
                             metaData.setImageurl(resolveURL(url, src));
+                            metaData.setFavicon(resolveURL(url, src));
                         } else {
                             src = doc.select("link[rel=icon]").attr("href");
                             if(!src.isEmpty()) {
                                 metaData.setImageurl(resolveURL(url, src));
+                                metaData.setFavicon(resolveURL(url, src));
                             }
                         }
+                    }
+                }
+
+                //Favicon
+                String src = doc.select("link[rel=apple-touch-icon]").attr("href");
+                if(!src.isEmpty()) {
+                    metaData.setFavicon(resolveURL(url, src));
+                } else {
+                    src = doc.select("link[rel=icon]").attr("href");
+                    if(!src.isEmpty()) {
+                        metaData.setFavicon(resolveURL(url, src));
                     }
                 }
 
