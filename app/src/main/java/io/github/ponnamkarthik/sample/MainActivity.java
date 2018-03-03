@@ -2,7 +2,11 @@ package io.github.ponnamkarthik.sample;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Toast;
 
+import io.github.ponnamkarthik.richlinkpreview.MetaData;
+import io.github.ponnamkarthik.richlinkpreview.RichLinkListener;
 import io.github.ponnamkarthik.richlinkpreview.RichLinkView;
 import io.github.ponnamkarthik.richlinkpreview.RichLinkViewSkype;
 import io.github.ponnamkarthik.richlinkpreview.RichLinkViewTelegram;
@@ -68,6 +72,16 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onError(Exception e) {
 
+            }
+        });
+
+
+        //custom clickListener
+        richLinkView.setDefaultClickListener(false);
+        richLinkView.setClickListener(new RichLinkListener() {
+            @Override
+            public void onClicked(View view, MetaData meta) {
+                Toast.makeText(getApplicationContext(), meta.getTitle(), Toast.LENGTH_SHORT).show();
             }
         });
 

@@ -111,6 +111,24 @@ RichPreview richPreview = new RichPreview(new ResponseListener() {
 });
 ~~~
 
+> Set your own CickListener
+
+~~~java
+
+//at first disable default click
+richLinkView.setDefaultClickListener(false);
+
+//set your own click listener
+richLinkView.setClickListener(new RichLinkListener() {
+    @Override
+    public void onClicked(View view, MetaData meta) {
+        //do stuff
+        Toast.makeText(getApplicationContext(), meta.getTitle(), Toast.LENGTH_SHORT).show();
+    }
+});
+
+~~~
+
 > MetaData
 
 ```java

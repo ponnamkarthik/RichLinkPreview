@@ -32,6 +32,10 @@ public class RichLinkViewSkype extends RelativeLayout {
 
     private String main_url;
 
+    private boolean isDefaultClick = true;
+
+    private RichLinkListener richLinkListener;
+
 
     public RichLinkViewSkype(Context context) {
         super(context);
@@ -103,13 +107,33 @@ public class RichLinkViewSkype extends RelativeLayout {
         relativeLayout.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(main_url));
-                context.startActivity(intent);
+                if(isDefaultClick) {
+                    richLinkClicked();
+                } else {
+                    if(richLinkListener != null) {
+                        richLinkListener.onClicked(view, meta);
+                    } else {
+                        richLinkClicked();
+                    }
+                }
             }
         });
 
     }
 
+    private void richLinkClicked() {
+        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(main_url));
+        context.startActivity(intent);
+    }
+
+
+    public void setDefaultClickListener(boolean isDefault) {
+        isDefaultClick = isDefault;
+    }
+
+    public void setClickListener(RichLinkListener richLinkListener1) {
+        richLinkListener = richLinkListener1;
+    }
 
 
     public void setLink(String url, final ViewListener viewListener) {
