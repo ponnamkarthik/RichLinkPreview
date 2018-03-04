@@ -11,13 +11,13 @@ A Rich Link Preview Library for Android
 #### Import using Gradle
 
 ~~~gradle
-compile 'io.github.ponnamkarthik:richlinkpreview:1.0.6'
+compile 'io.github.ponnamkarthik:richlinkpreview:1.0.7'
 ~~~
 
 for android studio 3.x
 
 ~~~gradle
-implementation 'io.github.ponnamkarthik:richlinkpreview:1.0.6'
+implementation 'io.github.ponnamkarthik:richlinkpreview:1.0.7'
 ~~~
 
 #### To implement existing layout using XML
