@@ -12,6 +12,7 @@
         <LinearLayout
             android:animateLayoutChanges="true"
             android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
@@ -46,6 +47,14 @@
                 android:layout_height="wrap_content">
 
             </io.github.ponnamkarthik.richlinkpreview.RichLinkViewTwitter>
+
+            <Button
+                android:id="@+id/go_to_list"
+                android:layout_gravity="center"
+                android:textAllCaps="false"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="GO to ListView"/>
 
         </LinearLayout>
 

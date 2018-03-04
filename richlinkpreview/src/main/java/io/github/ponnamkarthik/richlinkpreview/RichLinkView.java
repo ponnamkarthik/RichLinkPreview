@@ -2,14 +2,11 @@ package io.github.ponnamkarthik.richlinkpreview;
 
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Build;
 import android.support.annotation.RequiresApi;
-import android.text.Spannable;
-import android.text.SpannableString;
-import android.text.style.URLSpan;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -17,7 +14,6 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
-import com.squareup.picasso.Transformation;
 
 /**
  * Created by ponna on 16-01-2018.
@@ -63,10 +59,19 @@ public class RichLinkView extends RelativeLayout {
         this.context = context;
     }
 
-    public void initView() {
-        this.view = this;
+    @Override
+    protected void onFinishInflate() {
+        super.onFinishInflate();
+    }
 
-        inflate(context, R.layout.link_layout,this);
+
+    public void initView() {
+        if(findLinearLayoutChild() != null) {
+            this.view = findLinearLayoutChild();
+        } else  {
+            this.view = this;
+            inflate(context, R.layout.link_layout,this);
+        }
 
         linearLayout = (LinearLayout) findViewById(R.id.rich_link_card);
         imageView = (ImageView) findViewById(R.id.rich_link_image);
@@ -74,6 +79,8 @@ public class RichLinkView extends RelativeLayout {
         textViewDesp = (TextView) findViewById(R.id.rich_link_desp);
         textViewUrl = (TextView) findViewById(R.id.rich_link_url);
 
+
+        Log.d("Karthik", meta.getTitle());
 
         if(meta.getImageurl().equals("") || meta.getImageurl().isEmpty()) {
             imageView.setVisibility(GONE);
@@ -132,7 +139,21 @@ public class RichLinkView extends RelativeLayout {
         richLinkListener = richLinkListener1;
     }
 
+    protected LinearLayout findLinearLayoutChild() {
+        if (getChildCount() > 0 && getChildAt(0) instanceof LinearLayout) {
+            return (LinearLayout) getChildAt(0);
+        }
+        return null;
+    }
 
+    public void setLinkFromMeta(MetaData metaData) {
+        meta = metaData;
+        initView();
+    }
+
+    public MetaData getMetaData() {
+        return meta;
+    }
 
     public void setLink(String url, final ViewListener viewListener) {
         main_url = url;
@@ -140,8 +161,8 @@ public class RichLinkView extends RelativeLayout {
             @Override
             public void onData(MetaData metaData) {
                 meta = metaData;
-
-                if(meta.getTitle().isEmpty() || meta.getTitle().equals("")) {
+                Log.d("Karthik",  "Loaded onData");
+                if(!meta.getTitle().isEmpty() || !meta.getTitle().equals("")) {
                     viewListener.onSuccess(true);
                 }
 

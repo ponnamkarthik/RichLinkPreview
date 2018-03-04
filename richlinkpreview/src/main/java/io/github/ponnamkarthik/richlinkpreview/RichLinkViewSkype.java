@@ -8,6 +8,7 @@ import android.support.annotation.RequiresApi;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -59,9 +60,13 @@ public class RichLinkViewSkype extends RelativeLayout {
     }
 
     public void initView() {
-        this.view = this;
 
-        inflate(context, R.layout.skype_link_layout,this);
+        if(findRelativeLayoutChild() != null) {
+            this.view = findRelativeLayoutChild();
+        } else  {
+            this.view = this;
+            inflate(context, R.layout.skype_link_layout,this);
+        }
 
         relativeLayout = (RelativeLayout) findViewById(R.id.rich_link_card);
         imageView = (ImageView) findViewById(R.id.rich_link_image);
@@ -124,6 +129,22 @@ public class RichLinkViewSkype extends RelativeLayout {
     private void richLinkClicked() {
         Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(main_url));
         context.startActivity(intent);
+    }
+
+    protected RelativeLayout findRelativeLayoutChild() {
+        if (getChildCount() > 0 && getChildAt(0) instanceof LinearLayout) {
+            return (RelativeLayout) getChildAt(0);
+        }
+        return null;
+    }
+
+    public void setLinkFromMeta(MetaData metaData) {
+        meta = metaData;
+        initView();
+    }
+
+    public MetaData getMetaData() {
+        return meta;
     }
 
 

@@ -62,9 +62,13 @@ public class RichLinkViewTelegram extends RelativeLayout {
     }
 
     public void initView() {
-        this.view = this;
 
-        inflate(context, R.layout.telegram_link_layout,this);
+        if(findLinearLayoutChild() != null) {
+            this.view = findLinearLayoutChild();
+        } else  {
+            this.view = this;
+            inflate(context, R.layout.telegram_link_layout,this);
+        }
 
         linearLayout = (LinearLayout) findViewById(R.id.rich_link_card);
         imageView = (ImageView) findViewById(R.id.rich_link_image);
@@ -122,6 +126,22 @@ public class RichLinkViewTelegram extends RelativeLayout {
     private void richLinkClicked() {
         Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(main_url));
         context.startActivity(intent);
+    }
+
+    protected LinearLayout findLinearLayoutChild() {
+        if (getChildCount() > 0 && getChildAt(0) instanceof LinearLayout) {
+            return (LinearLayout) getChildAt(0);
+        }
+        return null;
+    }
+
+    public void setLinkFromMeta(MetaData metaData) {
+        meta = metaData;
+        initView();
+    }
+
+    public MetaData getMetaData() {
+        return meta;
     }
 
 

@@ -14,6 +14,12 @@ A Rich Link Preview Library for Android
 compile 'io.github.ponnamkarthik:richlinkpreview:1.0.5'
 ~~~
 
+for android studio 3.x
+
+~~~gradle
+implementation 'io.github.ponnamkarthik:richlinkpreview:1.0.5'
+~~~
+
 #### To implement existing layout using XML
 
 Add below code in activity_main.xml
@@ -110,6 +116,15 @@ RichPreview richPreview = new RichPreview(new ResponseListener() {
     }
 });
 ~~~
+
+> if you want to set obtained meta data to view
+
+~~~java
+
+richLinkView.setLinkFromMeta(metaData)
+
+~~~
+
 
 > Set your own CickListener
 
