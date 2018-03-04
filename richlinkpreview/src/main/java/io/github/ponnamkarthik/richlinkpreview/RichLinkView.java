@@ -80,8 +80,6 @@ public class RichLinkView extends RelativeLayout {
         textViewUrl = (TextView) findViewById(R.id.rich_link_url);
 
 
-        Log.d("Karthik", meta.getTitle());
-
         if(meta.getImageurl().equals("") || meta.getImageurl().isEmpty()) {
             imageView.setVisibility(GONE);
         } else {
@@ -161,7 +159,6 @@ public class RichLinkView extends RelativeLayout {
             @Override
             public void onData(MetaData metaData) {
                 meta = metaData;
-                Log.d("Karthik",  "Loaded onData");
                 if(!meta.getTitle().isEmpty() || !meta.getTitle().equals("")) {
                     viewListener.onSuccess(true);
                 }
