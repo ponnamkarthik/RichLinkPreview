@@ -79,6 +79,7 @@ public class RichLinkViewTwitter extends RelativeLayout {
         if(meta.getImageurl().equals("") || meta.getImageurl().isEmpty()) {
             imageView.setVisibility(GONE);
         } else {
+            imageView.setVisibility(VISIBLE);
             Picasso.with(context)
                     .load(meta.getImageurl())
                     .into(imageView);
@@ -87,12 +88,14 @@ public class RichLinkViewTwitter extends RelativeLayout {
         if(meta.getTitle().isEmpty() || meta.getTitle().equals("")) {
             textViewTitle.setVisibility(GONE);
         } else {
+            textViewTitle.setVisibility(VISIBLE);
             textViewTitle.setText(meta.getTitle());
         }
 
         if(meta.getDescription().isEmpty() || meta.getDescription().equals("")) {
             textViewDesp.setVisibility(GONE);
         } else {
+            textViewDesp.setVisibility(VISIBLE);
             textViewDesp.setText(meta.getDescription());
         }
 

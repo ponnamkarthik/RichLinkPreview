@@ -1,6 +1,8 @@
 package io.github.ponnamkarthik.sample.adapters;
 
 import android.content.Context;
+import android.content.DialogInterface;
+import android.support.v7.app.AlertDialog;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -31,8 +33,8 @@ public class URLAdapter extends BaseAdapter {
     ArrayList<MetaData> metaData= new ArrayList<>();
 
     public URLAdapter(Context context, ArrayList<URL> urls){
-        this.context=context;
-        this.urls=urls;
+        this.context = context;
+        this.urls = urls;
         for(int i = 0; i < urls.size(); i++) {
             metaData.add(null);
         }
@@ -40,7 +42,7 @@ public class URLAdapter extends BaseAdapter {
 
     @Override
     public int getCount() {
-        return urls.size();
+        return ((urls == null) ? 0 : urls.size());
     }
 
     @Override
@@ -73,7 +75,7 @@ public class URLAdapter extends BaseAdapter {
         final ViewHolder viewHolder;
         if(view == null) {
             viewHolder = new ViewHolder();
-            LayoutInflater inflater=LayoutInflater.from(context);
+            LayoutInflater inflater = LayoutInflater.from(context);
             view = inflater.inflate(R.layout.layout_list, viewGroup, false);
 
             viewHolder.richLinkView = (RichLinkView) view.findViewById(R.id.richLinkView);
@@ -90,7 +92,11 @@ public class URLAdapter extends BaseAdapter {
                 viewHolder.richLinkView.setLink(url.toString(), new ViewListener() {
                     @Override
                     public void onSuccess(boolean status) {
-                        metaData.set(i, viewHolder.richLinkView.getMetaData());
+                        try {
+                            metaData.set(i, viewHolder.richLinkView.getMetaData());
+                        } catch (IndexOutOfBoundsException e) {
+                            e.printStackTrace();
+                        }
                     }
                     @Override
                     public void onError(Exception e) {

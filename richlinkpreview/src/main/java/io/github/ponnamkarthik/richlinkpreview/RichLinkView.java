@@ -83,6 +83,7 @@ public class RichLinkView extends RelativeLayout {
         if(meta.getImageurl().equals("") || meta.getImageurl().isEmpty()) {
             imageView.setVisibility(GONE);
         } else {
+            imageView.setVisibility(VISIBLE);
             Picasso.with(context)
                     .load(meta.getImageurl())
                     .into(imageView);
@@ -91,16 +92,19 @@ public class RichLinkView extends RelativeLayout {
         if(meta.getTitle().isEmpty() || meta.getTitle().equals("")) {
             textViewTitle.setVisibility(GONE);
         } else {
+            textViewTitle.setVisibility(VISIBLE);
             textViewTitle.setText(meta.getTitle());
         }
         if(meta.getUrl().isEmpty() || meta.getUrl().equals("")) {
             textViewUrl.setVisibility(GONE);
         } else {
+            textViewUrl.setVisibility(VISIBLE);
             textViewUrl.setText(meta.getUrl());
         }
         if(meta.getDescription().isEmpty() || meta.getDescription().equals("")) {
             textViewDesp.setVisibility(GONE);
         } else {
+            textViewDesp.setVisibility(VISIBLE);
             textViewDesp.setText(meta.getDescription());
         }
 
