@@ -184,4 +184,5 @@ public class RichLinkViewSkype extends RelativeLayout {
         richPreview.getPreview(url);
     }
 
+
 }

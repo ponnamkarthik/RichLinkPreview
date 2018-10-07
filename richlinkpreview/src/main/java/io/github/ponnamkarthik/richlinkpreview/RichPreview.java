@@ -39,7 +39,9 @@ public class RichPreview {
         protected Void doInBackground(Void... params) {
             Document doc = null;
             try {
-                doc = Jsoup.connect(url).get();
+                doc = Jsoup.connect(url)
+                        .timeout(30*1000)
+                        .get();
 
                 Elements elements = doc.getElementsByTag("meta");
 
@@ -146,7 +148,6 @@ public class RichPreview {
                 e.printStackTrace();
                 responseListener.onError(new Exception("No Html Received from " + url + " Check your Internet " + e.getLocalizedMessage()));
             }
-
             return null;
         }
 

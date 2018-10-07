@@ -170,4 +170,5 @@ public class RichLinkViewTwitter extends RelativeLayout {
         richPreview.getPreview(url);
     }
 
+
 }

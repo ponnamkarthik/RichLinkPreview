@@ -123,6 +123,18 @@ RichPreview richPreview = new RichPreview(new ResponseListener() {
 
 richLinkView.setLinkFromMeta(metaData)
 
+or
+
+MetaData metaData = new MetaData();
+metaData.setTitle("Title");
+metaData.setDescription("Custom Meta Data");
+metaData.setFavicon("http://favicon url");
+metaData.setImageurl("http://image url");
+metaData.setSitename("Custom Meta data site");
+
+richLinkView.setLinkFromMeta(metaData);
+
+
 ~~~
 
 
