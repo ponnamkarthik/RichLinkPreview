@@ -1,5 +1,6 @@
 package io.github.ponnamkarthik.richlinkpreview;
 
+import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
@@ -55,7 +56,7 @@ public class RichLinkViewTelegram extends RelativeLayout {
         this.context = context;
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
+    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     public RichLinkViewTelegram(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);
         this.context = context;
