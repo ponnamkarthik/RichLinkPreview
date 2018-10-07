@@ -80,7 +80,7 @@ public class RichLinkViewTwitter extends RelativeLayout {
             imageView.setVisibility(GONE);
         } else {
             imageView.setVisibility(VISIBLE);
-            Picasso.with(context)
+            Picasso.get()
                     .load(meta.getImageurl())
                     .into(imageView);
         }

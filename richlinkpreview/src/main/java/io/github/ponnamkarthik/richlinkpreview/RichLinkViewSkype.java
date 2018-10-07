@@ -80,7 +80,7 @@ public class RichLinkViewSkype extends RelativeLayout {
             imageView.setVisibility(GONE);
         } else {
             imageView.setVisibility(VISIBLE);
-            Picasso.with(context)
+            Picasso.get()
                     .load(meta.getImageurl())
                     .into(imageView);
         }
@@ -89,7 +89,7 @@ public class RichLinkViewSkype extends RelativeLayout {
             imageViewFavIcon.setVisibility(GONE);
         } else {
             imageViewFavIcon.setVisibility(VISIBLE);
-            Picasso.with(context)
+            Picasso.get()
                     .load(meta.getFavicon())
                     .into(imageViewFavIcon);
         }
