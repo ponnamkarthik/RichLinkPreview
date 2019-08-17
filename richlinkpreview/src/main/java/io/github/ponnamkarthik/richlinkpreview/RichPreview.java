@@ -88,6 +88,19 @@ public class RichPreview {
                         metaData.setImageurl(resolveURL(url, image));
                     }
                 }
+                
+                //get image from meta[name=og:image] 
+                if(Metadata.getImageurl().isEmpty())
+                    {
+                Elements imageElements = doc.select("meta[name=og:image]");
+                if(imageElements.size() > 0) {
+                    String image = imageElements.attr("content");
+                    if(!image.isEmpty()) {
+                        metaData.setImageurl(resolveURL(url, image));
+                    }
+                }
+                }
+                    
                 if(metaData.getImageurl().isEmpty()) {
                     String src = doc.select("link[rel=image_src]").attr("href");
                     if (!src.isEmpty()) {
