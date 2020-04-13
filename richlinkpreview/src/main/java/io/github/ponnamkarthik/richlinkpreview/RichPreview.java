@@ -29,6 +29,7 @@ public class RichPreview {
 
     public void getPreview(String url){
         this.url = url;
+        metaData.setOriginalUrl(url);
         new getData().execute();
     }
 
