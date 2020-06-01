@@ -149,7 +149,7 @@ public class RichPreview {
                     } catch (URISyntaxException e) {
                         e.printStackTrace();
                     }
-                    if (url == null) {
+                    if (url == null || uri == null) {
                         metaData.setUrl(url);
                     } else {
                         metaData.setUrl(uri.getHost());
