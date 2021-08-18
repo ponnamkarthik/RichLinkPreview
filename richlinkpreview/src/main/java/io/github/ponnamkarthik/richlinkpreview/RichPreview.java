@@ -178,11 +178,12 @@ public class RichPreview {
             URI base_uri = null;
             try {
                 base_uri = new URI(url);
+                base_uri = base_uri.resolve(part);
+                return base_uri.toString();
             } catch (URISyntaxException e) {
                 e.printStackTrace();
             }
-            base_uri = base_uri.resolve(part);
-            return base_uri.toString();
+            return "";
         }
     }
 
