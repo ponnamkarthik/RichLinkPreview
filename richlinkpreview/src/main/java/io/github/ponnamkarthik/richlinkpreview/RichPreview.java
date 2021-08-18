@@ -182,6 +182,8 @@ public class RichPreview {
                 return base_uri.toString();
             } catch (URISyntaxException e) {
                 e.printStackTrace();
+            } catch(IllegalArgumentException e){
+                e.printStackTrace();
             }
             return "";
         }
