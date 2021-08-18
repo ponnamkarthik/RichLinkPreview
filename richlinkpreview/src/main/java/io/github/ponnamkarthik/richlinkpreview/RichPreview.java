@@ -180,9 +180,7 @@ public class RichPreview {
                 base_uri = new URI(url);
                 base_uri = base_uri.resolve(part);
                 return base_uri.toString();
-            } catch (URISyntaxException e) {
-                e.printStackTrace();
-            } catch(IllegalArgumentException e){
+            } catch (Exception e) {
                 e.printStackTrace();
             }
             return "";
