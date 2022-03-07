@@ -1,8 +1,10 @@
 package io.github.ponnamkarthik.richlinkpreview;
 
 import android.os.AsyncTask;
+import android.text.TextUtils;
 import android.webkit.URLUtil;
 
+import org.jsoup.Connection;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -21,34 +23,44 @@ public class RichPreview {
     MetaData metaData;
     ResponseListener responseListener;
     String url;
+    String userAgent;
 
     public RichPreview(ResponseListener responseListener) {
         this.responseListener = responseListener;
         metaData = new MetaData();
     }
 
-    public void getPreview(String url){
+    public void getPreview(String url) {
         this.url = url;
+        metaData.setOriginalUrl(url);
         new getData().execute();
     }
 
-    private class getData extends AsyncTask<Void , Void , Void> {
+    public void getPreview(String url, String userAgent) {
+        this.userAgent = userAgent;
+        getPreview(url);
+    }
+
+    private class getData extends AsyncTask<Void, Void, Void> {
 
 
         @Override
         protected Void doInBackground(Void... params) {
             Document doc = null;
             try {
-                doc = Jsoup.connect(url)
-                        .timeout(30*1000)
-                        .get();
+                Connection connection = Jsoup.connect(url)
+                                             .timeout(30 * 1000);
+                if (!TextUtils.isEmpty(userAgent)) {
+                    connection = connection.userAgent(userAgent);
+                }
+                doc = connection.get();
 
                 Elements elements = doc.getElementsByTag("meta");
 
                 // getTitle doc.select("meta[property=og:title]")
                 String title = doc.select("meta[property=og:title]").attr("content");
 
-                if(title == null || title.isEmpty()) {
+                if (title == null || title.isEmpty()) {
                     title = doc.title();
                 }
                 metaData.setTitle(title);
@@ -82,9 +94,9 @@ public class RichPreview {
 
                 //getImages
                 Elements imageElements = doc.select("meta[property=og:image]");
-                if(imageElements.size() > 0) {
+                if (imageElements.size() > 0) {
                     String image = imageElements.attr("content");
-                    if(!image.isEmpty()) {
+                    if (!image.isEmpty()) {
                         metaData.setImageurl(resolveURL(url, image));
                     }
                 }
@@ -107,12 +119,12 @@ public class RichPreview {
                         metaData.setImageurl(resolveURL(url, src));
                     } else {
                         src = doc.select("link[rel=apple-touch-icon]").attr("href");
-                        if(!src.isEmpty()) {
+                        if (!src.isEmpty()) {
                             metaData.setImageurl(resolveURL(url, src));
                             metaData.setFavicon(resolveURL(url, src));
                         } else {
                             src = doc.select("link[rel=icon]").attr("href");
-                            if(!src.isEmpty()) {
+                            if (!src.isEmpty()) {
                                 metaData.setImageurl(resolveURL(url, src));
                                 metaData.setFavicon(resolveURL(url, src));
                             }
@@ -122,11 +134,11 @@ public class RichPreview {
 
                 //Favicon
                 String src = doc.select("link[rel=apple-touch-icon]").attr("href");
-                if(!src.isEmpty()) {
+                if (!src.isEmpty()) {
                     metaData.setFavicon(resolveURL(url, src));
                 } else {
                     src = doc.select("link[rel=icon]").attr("href");
-                    if(!src.isEmpty()) {
+                    if (!src.isEmpty()) {
                         metaData.setFavicon(resolveURL(url, src));
                     }
                 }
@@ -143,14 +155,14 @@ public class RichPreview {
                     }
                 }
 
-                if(metaData.getUrl().equals("") || metaData.getUrl().isEmpty()) {
+                if (metaData.getUrl().equals("") || metaData.getUrl().isEmpty()) {
                     URI uri = null;
                     try {
                         uri = new URI(url);
                     } catch (URISyntaxException e) {
                         e.printStackTrace();
                     }
-                    if(url == null) {
+                    if (url == null || uri == null) {
                         metaData.setUrl(url);
                     } else {
                         metaData.setUrl(uri.getHost());
@@ -159,7 +171,8 @@ public class RichPreview {
 
             } catch (IOException e) {
                 e.printStackTrace();
-                responseListener.onError(new Exception("No Html Received from " + url + " Check your Internet " + e.getLocalizedMessage()));
+                responseListener.onError(new Exception(
+                        "No Html Received from " + url + " Check your Internet " + e.getLocalizedMessage()));
             }
             return null;
         }
@@ -172,17 +185,18 @@ public class RichPreview {
     }
 
     private String resolveURL(String url, String part) {
-        if(URLUtil.isValidUrl(part)) {
+        if (URLUtil.isValidUrl(part)) {
             return part;
         } else {
             URI base_uri = null;
             try {
                 base_uri = new URI(url);
-            } catch (URISyntaxException e) {
+                base_uri = base_uri.resolve(part);
+                return base_uri.toString();
+            } catch (Exception e) {
                 e.printStackTrace();
             }
-            base_uri = base_uri.resolve(part);
-            return base_uri.toString();
+            return "";
         }
     }
 
