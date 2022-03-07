@@ -1,8 +1,7 @@
 package io.github.ponnamkarthik.sample.adapters;
 
 import android.content.Context;
-import android.content.DialogInterface;
-import android.support.v7.app.AlertDialog;
+
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -78,7 +77,7 @@ public class URLAdapter extends BaseAdapter {
             LayoutInflater inflater = LayoutInflater.from(context);
             view = inflater.inflate(R.layout.layout_list, viewGroup, false);
 
-            viewHolder.richLinkView = (RichLinkView) view.findViewById(R.id.richLinkView);
+            viewHolder.richLinkView = view.findViewById(R.id.richLinkView);
             view.setTag(viewHolder);
         }
         else {

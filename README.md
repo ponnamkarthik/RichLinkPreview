@@ -18,6 +18,9 @@ for android studio 3.x
 
 ~~~gradle
 implementation 'io.github.ponnamkarthik:richlinkpreview:1.0.9'
+
+### jsoup library required 
+Implementation 'org.jsoup:jsoup:1.12.1'
 ~~~
 
 #### To implement existing layout using XML

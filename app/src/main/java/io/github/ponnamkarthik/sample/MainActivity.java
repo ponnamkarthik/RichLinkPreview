@@ -1,7 +1,7 @@
 package io.github.ponnamkarthik.sample;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -29,12 +29,12 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        richLinkView = (RichLinkView) findViewById(R.id.richLinkView);
-        richLinkView1 = (RichLinkViewTelegram) findViewById(R.id.richLinkView1);
-        richLinkView2 = (RichLinkViewSkype) findViewById(R.id.richLinkView2);
-        richLinkView3 = (RichLinkViewTwitter) findViewById(R.id.richLinkView3);
+        richLinkView = findViewById(R.id.richLinkView);
+        richLinkView1 = findViewById(R.id.richLinkView1);
+        richLinkView2 = findViewById(R.id.richLinkView2);
+        richLinkView3 = findViewById(R.id.richLinkView3);
 
-        goToList = (Button) findViewById(R.id.go_to_list);
+        goToList = findViewById(R.id.go_to_list);
 
         richLinkView.setLink("https://whatsapp.com" ,new ViewListener() {
             @Override

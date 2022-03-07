@@ -100,7 +100,20 @@ public class RichPreview {
                         metaData.setImageurl(resolveURL(url, image));
                     }
                 }
-                if (metaData.getImageurl().isEmpty()) {
+                
+                //get image from meta[name=og:image] 
+                if(Metadata.getImageurl().isEmpty())
+                    {
+                Elements imageElements = doc.select("meta[name=og:image]");
+                if(imageElements.size() > 0) {
+                    String image = imageElements.attr("content");
+                    if(!image.isEmpty()) {
+                        metaData.setImageurl(resolveURL(url, image));
+                    }
+                }
+                }
+                    
+                if(metaData.getImageurl().isEmpty()) {
                     String src = doc.select("link[rel=image_src]").attr("href");
                     if (!src.isEmpty()) {
                         metaData.setImageurl(resolveURL(url, src));
@@ -130,14 +143,14 @@ public class RichPreview {
                     }
                 }
 
-                for (Element element : elements) {
-                    if (element.hasAttr("property")) {
-                        String str_property = element.attr("property").toString().trim();
-                        if (str_property.equals("og:url")) {
-                            metaData.setUrl(element.attr("content").toString());
+                for(Element element : elements) {
+                    if(element.hasAttr("property")) {
+                        String str_property = element.attr("property").trim();
+                        if(str_property.equals("og:url")) {
+                            metaData.setUrl(element.attr("content"));
                         }
-                        if (str_property.equals("og:site_name")) {
-                            metaData.setSitename(element.attr("content").toString());
+                        if(str_property.equals("og:site_name")) {
+                            metaData.setSitename(element.attr("content"));
                         }
                     }
                 }
