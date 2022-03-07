@@ -5,7 +5,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Build;
-import android.support.annotation.RequiresApi;
 import android.text.Spannable;
 import android.text.style.URLSpan;
 import android.util.AttributeSet;
@@ -71,13 +70,13 @@ public class RichLinkViewTelegram extends RelativeLayout {
             inflate(context, R.layout.telegram_link_layout,this);
         }
 
-        linearLayout = (LinearLayout) findViewById(R.id.rich_link_card);
-        imageView = (ImageView) findViewById(R.id.rich_link_image);
-        textViewTitle = (TextView) findViewById(R.id.rich_link_title);
-        textViewDesp = (TextView) findViewById(R.id.rich_link_desp);
-        textViewUrl = (TextView) findViewById(R.id.rich_link_url);
+        linearLayout = findViewById(R.id.rich_link_card);
+        imageView = findViewById(R.id.rich_link_image);
+        textViewTitle = findViewById(R.id.rich_link_title);
+        textViewDesp = findViewById(R.id.rich_link_desp);
+        textViewUrl = findViewById(R.id.rich_link_url);
 
-        textViewOriginalUrl = (TextView) findViewById(R.id.rich_link_original_url);
+        textViewOriginalUrl = findViewById(R.id.rich_link_original_url);
 
         textViewOriginalUrl.setText(main_url);
         removeUnderlines((Spannable)textViewOriginalUrl.getText());

@@ -120,12 +120,12 @@ public class RichPreview {
 
                 for(Element element : elements) {
                     if(element.hasAttr("property")) {
-                        String str_property = element.attr("property").toString().trim();
+                        String str_property = element.attr("property").trim();
                         if(str_property.equals("og:url")) {
-                            metaData.setUrl(element.attr("content").toString());
+                            metaData.setUrl(element.attr("content"));
                         }
                         if(str_property.equals("og:site_name")) {
-                            metaData.setSitename(element.attr("content").toString());
+                            metaData.setSitename(element.attr("content"));
                         }
                     }
                 }

@@ -4,7 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Build;
-import android.support.annotation.RequiresApi;
+import androidx.annotation.RequiresApi;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.ImageView;
@@ -68,12 +68,12 @@ public class RichLinkViewSkype extends RelativeLayout {
             inflate(context, R.layout.skype_link_layout,this);
         }
 
-        relativeLayout = (RelativeLayout) findViewById(R.id.rich_link_card);
-        imageView = (ImageView) findViewById(R.id.rich_link_image);
-        imageViewFavIcon = (ImageView) findViewById(R.id.rich_link_favicon);
-        textViewTitle = (TextView) findViewById(R.id.rich_link_title);
-        textViewDesp = (TextView) findViewById(R.id.rich_link_desp);
-        textViewUrl = (TextView) findViewById(R.id.rich_link_url);
+        relativeLayout = findViewById(R.id.rich_link_card);
+        imageView = findViewById(R.id.rich_link_image);
+        imageViewFavIcon = findViewById(R.id.rich_link_favicon);
+        textViewTitle = findViewById(R.id.rich_link_title);
+        textViewDesp = findViewById(R.id.rich_link_desp);
+        textViewUrl = findViewById(R.id.rich_link_url);
 
 
         if(meta.getImageurl().equals("") || meta.getImageurl().isEmpty()) {
